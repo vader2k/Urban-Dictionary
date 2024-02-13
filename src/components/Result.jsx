@@ -57,11 +57,11 @@ const Result = () => {
         </div>
       </div>
       <div className='w-full my-[15px] flex justify-evenly items-end uppercase text-[1.5rem] font-semibold text-gray-600'>
-        <span className='text-black'>{word}</span>
-        <span className='text-[0.8rem]'>author: {author}</span>
+        {word && (<span className='text-black'>{word}</span>)}
+        {author && (<span className='text-[0.8rem]'>author: {author}</span>)}
       </div>
       <div className='italic text-[0.9rem]'>
-        example: {example}
+       { example && (<span> example: {example}</span>)}
       </div>
       { error ? "oops something went wrong" 
         :
