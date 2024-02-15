@@ -19,7 +19,7 @@ const App = () => {
         <Result />
         {
           isbookmarkopen && (
-            <div className="absolute top-0 right-0 h-[100%] p-3 bg-slate-400 w-[60%]">
+            <div className="absolute top-0 right-0 h-[100%] p-3 bg-slate-300 w-[60%]">
               <Bookmark setIsBookmarkOpen={setIsBookmarkOpen}/>
             </div>
           )

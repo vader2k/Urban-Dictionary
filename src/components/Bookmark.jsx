@@ -15,13 +15,14 @@ const Bookmark = ({ setIsBookmarkOpen }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-5">
-        <div className="w-full flex justify-end">
+    <div className="w-full h-[100%] flex flex-col gap-5 relative">
+        <div className="absolute w-[500vw] bg-black opacity-[0.3] h-[100%] right-[220px] top-[-20px] z-[10]"></div>
+        <div className="w-full flex justify-end z-[15]">
             <button className="text-[1.5rem]">
                 <MdClose onClick={() => setIsBookmarkOpen(false)} />
             </button>
         </div>
-        <div>
+        <div className="z-[15]">
             <h2 className="uppercase font-bold text-gray-500 text-[1.5rem] pb-5">Bookmarks</h2>
             <ul className="w-full">
             {bookmark.map((word) => (
