@@ -84,14 +84,14 @@ const Result = () => {
         {/* Search history display */}
         {
           history &&( <div className="my-5">
-          <h3 className="font-semibold mb-2"> History:</h3>
+          <h3 className="font-semibold mb-2 italic text-[0.85rem]"> History:</h3>
           <ul className='overflow-y-auto max-h-[100px] scrollable'>
             {history.map((item, index) => (
               <div
                 key={index}
                 onClick={()=> setSearch(item)}
               >
-                <div className='flex justify-between p-2 cursor-pointer my-2 bg-white rounded-xl'>
+                <div className='flex justify-between p-2 cursor-pointer my-2 border border-white rounded-xl'>
                   <img 
                     src={ copied === item ? tick : copy }
                     alt="copy_icon" 
