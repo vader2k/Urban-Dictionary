@@ -129,7 +129,7 @@ const Result = () => {
         { word && <div className='flex items-center gap-3'>
           <div>
             <MdOutlineBookmarkAdd 
-              className='text-[1.5rem] mt-[30px] text-gray-500'
+              className='text-[1.5rem] mt-[30px] text-gray-500 hover:text-purple-500'
               onClick={()=> handleAddWord(word)}
             />
           </div>

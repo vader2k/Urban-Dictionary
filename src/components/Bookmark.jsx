@@ -23,7 +23,10 @@ const Bookmark = ({ setIsBookmarkOpen }) => {
             </button>
         </div>
         <div className="z-[15]">
-            <h2 className="uppercase font-bold text-gray-500 text-[1.5rem] pb-5">Bookmarks</h2>
+            <h2 className="uppercase font-bold text-purple-400 text-[1.5rem] pb-5">Bookmarks</h2>
+            <h3 className="pb-3 text-[0.85rem] capitalize text-gray-500">
+                You have {bookmark.length} item in your bookmarks 😄
+            </h3>
             <ul className="w-full">
             {bookmark.map((word) => (
                 <li key={word}>
@@ -37,10 +40,10 @@ const Bookmark = ({ setIsBookmarkOpen }) => {
         </div>
         <div className="flex justify-end my-5">
             <button 
-                className="text-red-300 text-[0.9rem] uppercase"
+                className="text-red-500 text-[0.9rem] uppercase"
                 onClick={() => handleResetBookmark()}
             >
-                Reset
+                {bookmark.length === 0 ? "" : 'Reset'}
             </button>
         </div>
     </div>
