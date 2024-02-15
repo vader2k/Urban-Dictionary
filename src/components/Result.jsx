@@ -18,7 +18,6 @@ const Result = () => {
         },
       });
         setApiData(res.data.list);
-        console.log(apiData)
       } catch (error) {
         setError(error);
       }
