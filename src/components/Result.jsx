@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FcSearch } from 'react-icons/fc';
+import { MdOutlineBookmarkAdd } from "react-icons/md";
+import { addWord } from '../Redux/bookmarkReducer'
 import axios from 'axios';
 import copy from '../assets/copy.svg'
 import tick from '../assets/tick.svg'
+
 
 const Result = () => {
   const [search, setSearch] = useState(''); // setting the initla state of the input form
@@ -11,6 +15,18 @@ const Result = () => {
   const [buttonClicked, setButtonClicked] = useState(false); // an optional button for the search input to make the fetchData call when clicked
   const [history, setHistory] = useState([]) //an array that stores search history
   const [copied, setCopied] = useState('')
+
+  const dispatch = useDispatch()
+    // Asynchronous function to handle adding word to bookmark
+    const handleAddWord = async () => {
+      // Wait for the API call to complete
+      await fetchData();
+      // Dispatch the addWord action
+      dispatch(addWord(word));
+      console.log(word)
+    };
+  
+  
 
   const fetchData = async () => {
     try {
@@ -61,7 +77,7 @@ const Result = () => {
   }
 
   return (
-    <div className="mt-[30px] w-full flex flex-col items-center">
+    <div className="mt-[30px] w-full flex flex-col items-center relative">
       <div className="relative">
         <form 
           onSubmit={handleSubmit}
@@ -110,7 +126,16 @@ const Result = () => {
 
         </div>
 
-        <span className='text-[1.5rem] uppercase font-semibold text-gray-600 mt-[30px]'>{word}</span>
+        { word && <div className='flex items-center gap-3'>
+          <div>
+            <MdOutlineBookmarkAdd 
+              className='text-[1.5rem] mt-[30px] text-gray-500'
+              onClick={()=> handleAddWord(word)}
+            />
+          </div>
+          <span className='text-[1.5rem] uppercase font-semibold text-gray-600 mt-[30px]'>{word}</span>
+        </div>}
+        
         <div className='flex overflow-x-auto min-w-[380px] w-full p-3 mt-[20px]'>
           {
             apiData.map((items, index) => (
