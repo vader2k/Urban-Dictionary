@@ -36,30 +36,41 @@ const Result = () => {
   const example = apiData?.example || '';
   const result = apiData?.definition || '';
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setButtonClicked(true)
+    console.log(search)
+  }
   return (
     <div className="mt-[30px] w-full flex flex-col items-center">
       <div className="relative">
-        <input
-          type="text"
-          placeholder="enter a word.."
-          className="py-3 px-6 w-full min-w-[300px] text-[0.8rem] outline-none rounded-[90px] bg-gray-400 text-white"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="absolute right-[10px] top-[10px]">
-          <FcSearch
-            className="text-[1.3rem]"
-            onClick={() => setButtonClicked(true)}
+        <form 
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="text"
+            placeholder="enter a word.."
+            className="py-3 px-6 w-full min-w-[300px] text-[0.8rem] outline-none rounded-[90px] bg-gray-400 text-white"
+            onChange={(e) => setSearch(e.target.value)}
           />
-        </div>
+          <button
+            type='submit' 
+            className="absolute right-[10px] top-[10px]">
+            <FcSearch
+              className="text-[1.3rem]"
+              // onClick={() => setButtonClicked(true)}
+            />
+          </button>
+        </form>
       </div>
       <div className='w-full my-[15px] flex justify-evenly items-end uppercase text-[1.5rem] font-semibold text-gray-600'>
         {word && (<span className='text-black'>{word}</span>)}
         {author && (<span className='text-[0.8rem]'>author: {author}</span>)}
       </div>
       <div className='italic text-[0.9rem]'>
-        {example && (<span> example: {example}</span>)}
+        {example && (<span className='px-3'> example: {example}</span>)}
       </div>
-      {error ? "oops something went wrong" :
+      {error ? <span className='text-red-500'>oops something went wrong, please refresh</span> :
         result && (
           <div className='bg-gray-400 text-white mt-[10px] p-3 leading-[1.5rem] rounded-[15px] w-full min-h-[180px]'>
             <p className='mt-[15px]'>{result}</p>
