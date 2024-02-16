@@ -15,10 +15,9 @@ const Bookmark = ({ setIsBookmarkOpen }) => {
   };
 
   return (
-    <div className="w-full h-[100%] flex flex-col gap-5 relative pl-5 sm:pl-0">
-        <div className="absolute w-[500vw] bg-black opacity-[0.3] h-[100dvh] right-[220px] top-[-20px] z-[10]"></div>
+    <div className="w-full h-[100%] flex flex-col gap-5 relative pl-5 sm:pl-0 border-l border-black ">
         <div className="w-full flex justify-end z-[15]">
-            <button className="text-[1.5rem]">
+            <button className="text-[1.5rem] text-white">
                 <MdClose onClick={() => setIsBookmarkOpen(false)} />
             </button>
         </div>
@@ -31,7 +30,7 @@ const Bookmark = ({ setIsBookmarkOpen }) => {
             {bookmark.map((word) => (
                 <li key={word}>
                     <div className="w-full flex justify-between items-center my-5">
-                        <span className="uppercase">{word}{' '}</span>
+                        <span className="uppercase text-white">{word}{' '}</span>
                         <button onClick={() => handleRemoveWord(word)}><MdOutlineBookmarkRemove className="text-gray-600 hover:text-white"/></button>
                     </div>
                 </li>

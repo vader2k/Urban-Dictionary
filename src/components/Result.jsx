@@ -19,11 +19,15 @@ const Result = () => {
   const dispatch = useDispatch()
     // Asynchronous function to handle adding word to bookmark
     const handleAddWord = async () => {
-      // Wait for the API call to complete
-      await fetchData();
-      // Dispatch the addWord action
+      // Dispatch the addWord action without waiting for the API call
       dispatch(addWord(word));
-      console.log(word)
+    
+      // Wait for the API call to complete only if needed
+      if (apiData.length === 0) {
+        await fetchData();
+      }
+    
+      console.log(word);
     };
   
   
